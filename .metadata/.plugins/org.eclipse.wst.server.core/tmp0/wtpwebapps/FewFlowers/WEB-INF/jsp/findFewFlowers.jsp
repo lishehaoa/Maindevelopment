@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<link rel="shortcut icon" href="static/images/huashao.png">
+<head>
+<meta charset="UTF-8">
+<title>FewFlowers-花少首页</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-1.8.2.min.js"></script>
+<link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+<style type="text/css">
+    #main_table{
+        float: left;
+        table-layout: fixed;
+        width: 300px;
+ 		background-color: #CF9E9E;
+ 		bottom: -2000px;
+    }
+    .host_style{
+    	height: 37px;
+    	border-bottom:2px solid #E0E0E0;
+    }
+    table tr:hover{
+    	background-color: #66B3FF;
+    }
+    input{
+    	float: right;
+    	border: none;
+    	background-color: #CF9E9E;
+    }
+    .forpoliceuse:hover{
+    	background-color: #FF0000;
+    }
+    .see:hover{
+    	background-color: #A3D1D1;
+    }
+</style>
+</head>
+<body>
+	<table id='main_table' cellpadding="9">
+		<c:forEach items="${fewFlowersLogin}" var="Few" varStatus="st">
+			<tr>
+				<td class="host_style">
+					${Few.login_name}
+					<c:if test="${Few.login_status == 1 }">
+			   			<input value="冻结" type="submit" id="login_id" onclick="updateFindFewFlowers()" class="forpoliceuse">
+			   		</c:if>
+			   		<c:if test="${Few.login_status == 2 }">
+			   			<input value="冻结" type="submit" id="login_id" onclick="updateFindFewFlowers()" class="forpoliceuse">
+			   		</c:if>
+					<input value="查看" type="submit" class="see">
+				</td>
+			</tr>
+		<input type="hidden" value="${Few.login_id }"/>
+		</c:forEach>
+	</table>
+</body>
+<script type="text/javascript">
+</script>
+</html>

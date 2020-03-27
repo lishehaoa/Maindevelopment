@@ -1,0 +1,45 @@
+package com.test;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+public class Test2 {
+    private static char[] codeSequence = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    private static int codeCount = 4;// 定义图片上显示验证码的个数
+    /**
+          * 生成一个map集合
+     * code为生成的验证码
+     * codePic为生成的验证码BufferedImage对象
+     * @return
+     */
+    public static Map<String,Object> generateCodeAndPic() {
+        // 创建一个随机数生成器类
+        Random random = new Random();
+        // randomCode用于保存随机产生的验证码，以便用户登录后进行验证。
+        StringBuffer randomCode = new StringBuffer();
+
+        // 随机产生codeCount数字的验证码。
+        for (int i = 0; i < codeCount; i++) {
+            // 得到随机产生的验证码数字。
+            String code = String.valueOf(codeSequence[random.nextInt(10)]);
+            // 用随机产生的颜色将验证码绘制到图像中。
+            gd.setColor(new Color(red, green, blue));
+            gd.drawString(code, (i + 1) * xx, codeY);
+
+            // 将产生的四个随机数组合在一起。
+            randomCode.append(code);
+        }
+        Map<String,Object> map  =new HashMap<String,Object>();
+        //存放验证码
+        map.put("code", randomCode);
+        //存放生成的验证码BufferedImage对象
+        map.put("codePic", buffImg);
+        System.out.println(map);
+        return map;
+    }
+}

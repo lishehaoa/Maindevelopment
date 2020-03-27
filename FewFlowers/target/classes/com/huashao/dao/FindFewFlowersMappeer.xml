@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashao.dao.FindFewFlowersMappeer">
+
+	<select id="findFewFlowersLogin" resultType="com.huashao.pojo.FewFlowersLogin">
+		select * from few_flowers_login
+	</select>
+	
+	<update id="updateFewFlowersLogin" parameterType="int">
+		update few_flowers_login set login_status="2" where login_id=#{login_id};
+	</update>
+</mapper>

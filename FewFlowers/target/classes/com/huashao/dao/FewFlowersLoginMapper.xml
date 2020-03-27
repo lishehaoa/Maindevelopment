@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashao.dao.FewFlowersLoginMapper">
+
+	<select id="findLoginUserName" parameterType="String" resultType="int">
+		select count(*) from few_flowers_login where login_username like #{login_username};
+	</select>
+	
+	<insert id="register" parameterType="com.huashao.pojo.FewFlowersLogin">
+        insert into few_flowers_login (
+        login_username,
+        login_password,
+        login_status,
+        login_registrationtime)
+        values (
+        #{login_username},
+        #{login_password},
+        #{login_status},
+        #{login_registrationtime})
+    </insert>
+	
+	<select id="login" parameterType="String" resultType="com.huashao.pojo.FewFlowersLogin">
+		select login_id,login_username,login_password,login_status from few_flowers_login where login_username=#{login_username}
+	</select>
+</mapper>
